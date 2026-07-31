@@ -1,0 +1,16 @@
+# Environment variables (secrets)
+.env
+api/.env
+
+# Python
+api/venv/
+api/__pycache__/
+*.pyc
+
+# Node
+app/node_modules/
+app/.next/
+
+# OS files
+.DS_Store
+Thumbs.db

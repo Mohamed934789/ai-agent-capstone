@@ -1,0 +1,124 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-background: #120F1B;
+  --color-surface: #1C1830;
+  --color-surface-hover: #241F3D;
+  --color-border: #332B52;
+  --color-signal: #E3A548;
+  --color-thinking: #8B7FFF;
+  --color-foreground: #F5F1EA;
+  --color-muted: #948FA0;
+
+  --font-display: var(--font-fraunces), serif;
+  --font-mono: var(--font-plex-mono), monospace;
+  --font-sans: var(--font-inter), sans-serif;
+}
+
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+@keyframes drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(4%, 6%) scale(1.08); }
+}
+@keyframes drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-6%, -3%) scale(1.05); }
+}
+@keyframes underline-sweep {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+body {
+  color: var(--color-foreground);
+  background: var(--color-background);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.ambient-orbs {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ambient-orbs .orb-3 {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 35vw;
+  height: 35vw;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.14;
+  background: radial-gradient(circle, #E3A548, transparent 65%);
+  animation: drift-1 18s ease-in-out infinite reverse;
+}
+
+.ambient-orbs::before,
+.ambient-orbs::after {
+  content: "";
+  position: absolute;
+  width: 55vw;
+  height: 55vw;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.32;
+}
+.ambient-orbs::before {
+  top: -15%;
+  left: -15%;
+  background: radial-gradient(circle, #8B7FFF, transparent 65%);
+  animation: drift-1 14s ease-in-out infinite;
+}
+.ambient-orbs::after {
+  bottom: -20%;
+  right: -15%;
+  background: radial-gradient(circle, #E3A548, transparent 65%);
+  animation: drift-2 16s ease-in-out infinite;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.container {
+  max-width: 48rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+::selection {
+  background: #E3A548;
+  color: #120F1B;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.brand-underline {
+  transform-origin: left;
+  animation: underline-sweep 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  transform: scaleX(0);
+}
