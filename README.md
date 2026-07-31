@@ -6,7 +6,11 @@
 
 Built with LangChain, FastAPI, and Next.js — from scratch, no `AgentExecutor` shortcuts.
 
-[Live Demo](#) · [Report Bug](#) · [Request Feature](#)
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 
 </div>
 
@@ -53,13 +57,17 @@ CustomAgentExecutor  ──▶  OpenAI API (gpt-4o-mini)
 Streamed tokens ──▶ Server-Sent Events ──▶ Browser (live render)
 ```
 
-**How a request flows:**
+<details>
+<summary><strong>How a request flows (click to expand)</strong></summary>
+<br>
 
 1. The user submits a question from the browser.
 2. FastAPI opens a streaming connection and hands the question to `CustomAgentExecutor`.
 3. The agent asks the LLM what to do. The LLM responds with a tool call (math, web search) or a `final_answer`.
 4. If a tool was called, it executes, and the result is added to the agent's scratchpad — then the loop repeats.
 5. Once `final_answer` is called, the loop ends and the answer streams back to the browser token by token.
+
+</details>
 
 ## Getting started
 
