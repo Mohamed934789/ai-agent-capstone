@@ -1,28 +1,32 @@
 <div align="center">
 
-# Signal
+# 🔮 Signal
 
 **A streaming AI agent that thinks in steps, out loud.**
 
 Built with LangChain, FastAPI, and Next.js — from scratch, no `AgentExecutor` shortcuts.
 
-![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
-![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+
+<br>
+
+![Signal demo](./assets/demo.png)
 
 </div>
 
 ---
 
-## Overview
+## ✨ Overview
 
 Signal is a full-stack AI agent application. Instead of just calling an LLM and waiting for a full response, it streams the agent's reasoning **token by token** — showing exactly which tool it's using, why, and what it found, before it commits to a final answer.
 
 Rather than relying on LangChain's built-in `AgentExecutor`, this project implements a **custom agent loop from scratch**: manual tool-calling, manual streaming via callbacks and an `asyncio.Queue`, and manual reasoning-step tracking. The goal was to understand — and be able to explain — every layer of how an LLM agent actually works, not just import one.
 
-## Features
+## 🚀 Features
 
 - **Custom agent loop** — a hand-built `CustomAgentExecutor` that iteratively calls the LLM, executes tools, and feeds results back until it reaches a final answer (with a max-iteration safety limit)
 - **True token streaming** — responses are streamed live from OpenAI through FastAPI to the browser via Server-Sent Events, not faked by chunking a finished response
@@ -30,7 +34,7 @@ Rather than relying on LangChain's built-in `AgentExecutor`, this project implem
 - **Live reasoning trace** — the UI shows each tool call as it happens, then resolves into a final, formatted answer
 - **Concurrent tool execution** — multiple tool calls in a single step run in parallel with `asyncio.gather`, not sequentially
 
-## Tech stack
+## 🧱 Tech stack
 
 | Layer | Technology |
 |---|---|
@@ -40,7 +44,7 @@ Rather than relying on LangChain's built-in `AgentExecutor`, this project implem
 | Frontend | Next.js, React, TypeScript, Tailwind CSS |
 | Streaming transport | Server-Sent Events (SSE) |
 
-## Architecture
+## 🏗️ Architecture
 
 ```
 Browser (Next.js)
@@ -58,7 +62,7 @@ Streamed tokens ──▶ Server-Sent Events ──▶ Browser (live render)
 ```
 
 <details>
-<summary><strong>How a request flows (click to expand)</strong></summary>
+<summary><strong>🔍 How a request flows (click to expand)</strong></summary>
 <br>
 
 1. The user submits a question from the browser.
@@ -69,7 +73,7 @@ Streamed tokens ──▶ Server-Sent Events ──▶ Browser (live render)
 
 </details>
 
-## Getting started
+## ⚡ Getting started
 
 ### Prerequisites
 
@@ -114,7 +118,7 @@ npm run dev
 
 The app is now live at `http://localhost:3000`.
 
-## Project structure
+## 📁 Project structure
 
 ```
 ai-agent-capstone/
@@ -122,13 +126,15 @@ ai-agent-capstone/
 │   ├── agent.py        # Agent logic: prompt, tools, streaming, custom executor
 │   ├── main.py          # FastAPI app and the /invoke endpoint
 │   └── .env              # API keys (not committed)
-└── app/
-    └── src/
-        ├── app/            # Pages, layout, global styles
-        └── components/     # Header, TextArea, Output, HowItWorks
+├── app/
+│   └── src/
+│       ├── app/            # Pages, layout, global styles
+│       └── components/     # Header, TextArea, Output, HowItWorks
+└── assets/
+    └── demo.png          # Screenshot used in this README
 ```
 
-## Roadmap
+## 🗺️ Roadmap
 
 - [ ] Persistent chat history (currently in-memory only)
 - [ ] User authentication
@@ -136,11 +142,11 @@ ai-agent-capstone/
 - [ ] Add more tools (calculator with unit conversion, code execution)
 - [ ] Deploy to production (Vercel + Railway/Render)
 
-## Acknowledgements
+## 🙏 Acknowledgements
 
 Built while working through [Aurelio Labs' LangChain course](https://github.com/aurelio-labs/langchain-course), then extended and customized end to end — UI, branding, and functionality.
 
-## Author
+## 👤 Author
 
 **Mohamed Kassab**
 Final-year AI student · transitioning into AI Engineering
