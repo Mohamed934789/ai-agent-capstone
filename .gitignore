@@ -14,3 +14,10 @@ app/.next/
 # OS files
 .DS_Store
 Thumbs.db
+.env.*
+!.env.example
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
